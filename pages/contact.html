@@ -39,7 +39,7 @@
                             <p id="phone">Loading...</p>
                         </div>
                     </div>
-                    <form class="contact-form" action="https://formspree.io/f/xgvkwbbr" method="POST">
+                    <form class="contact-form" id="contact-form">
                         <div class="form-group">
                             <label for="name">Name</label>
                             <input type="text" id="name" name="name" required>
@@ -80,9 +80,15 @@
         </div>
     </footer>
 
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
     <script src="../js/config.js"></script>
     <script src="../js/main.js"></script>
     <script>
+        // Initialize EmailJS
+        (function() {
+            emailjs.init("BSZKOKzPOhDIbleM_"); // You'll get this from EmailJS
+        })();
+
         // Load contact information from config
         document.addEventListener('DOMContentLoaded', function() {
             // Update contact information
@@ -95,6 +101,51 @@
             document.getElementById('github-link').href = `https://github.com/${config.social.github}`;
             document.getElementById('linkedin-link').href = `https://linkedin.com/in/${config.social.linkedin}`;
             document.getElementById('twitter-link').href = `https://twitter.com/${config.social.twitter}`;
+
+            // Handle form submission
+            const contactForm = document.getElementById('contact-form');
+            contactForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                const submitBtn = contactForm.querySelector('button[type="submit"]');
+                const originalBtnText = submitBtn.innerHTML;
+                
+                // Show loading state
+                submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
+                submitBtn.disabled = true;
+
+                // Send email using EmailJS
+                emailjs.sendForm('service_ioovlgf', 'template_8j0pb2y', contactForm)
+                    .then(function() {
+                        // Show success message
+                        submitBtn.innerHTML = '<i class="fas fa-check"></i> Message Sent!';
+                        submitBtn.style.backgroundColor = '#4CAF50';
+                        
+                        // Reset form
+                        contactForm.reset();
+                        
+                        // Reset button after 2 seconds
+                        setTimeout(() => {
+                            submitBtn.innerHTML = originalBtnText;
+                            submitBtn.style.backgroundColor = '';
+                            submitBtn.disabled = false;
+                        }, 2000);
+                    })
+                    .catch(function(error) {
+                        // Show error message
+                        submitBtn.innerHTML = '<i class="fas fa-exclamation-circle"></i> Error!';
+                        submitBtn.style.backgroundColor = '#f44336';
+                        
+                        // Reset button after 2 seconds
+                        setTimeout(() => {
+                            submitBtn.innerHTML = originalBtnText;
+                            submitBtn.style.backgroundColor = '';
+                            submitBtn.disabled = false;
+                        }, 2000);
+                        
+                        console.error('Failed to send message:', error);
+                    });
+            });
         });
     </script>
 </body>
