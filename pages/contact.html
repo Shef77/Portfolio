@@ -3,103 +3,98 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact | Xavier Shefcyk</title>
+    <title>Contact - Xavier Shefcyk</title>
     <link rel="stylesheet" href="../css/styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <!-- Navigation -->
     <nav class="main-nav">
-        <div class="nav-container">
-            <div class="logo">
-                <span>XS</span>
-            </div>
-            <ul class="nav-links">
-                <li><a href="../index.html" class="nav-link">Home</a></li>
-                <li><a href="skills.html" class="nav-link">Skills</a></li>
-                <li><a href="projects.html" class="nav-link">Projects</a></li>
-                <li><a href="experience.html" class="nav-link">Experience</a></li>
-                <li><a href="contact.html" class="nav-link">Contact</a></li>
-            </ul>
+        <div class="nav-links">
+            <a href="../index.html" class="nav-link">Home</a>
+            <a href="skills.html" class="nav-link">Skills</a>
+            <a href="projects.html" class="nav-link">Projects</a>
+            <a href="experience.html" class="nav-link">Experience</a>
+            <a href="contact.html" class="nav-link active">Contact</a>
         </div>
     </nav>
 
-    <main>
+    <main class="main-content">
         <section id="contact" class="contact">
+            <h1>Contact Me</h1>
             <div class="contact-container">
-                <h2 class="section-title">Get in Touch</h2>
                 <div class="contact-content">
                     <div class="contact-info">
-                        <h3>Contact Information</h3>
+                        <h3>Get in Touch</h3>
+                        <div class="info-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <p id="location">Loading...</p>
+                        </div>
                         <div class="info-item">
                             <i class="fas fa-envelope"></i>
-                            <p>Email: <a href="mailto:xshefcyk8@gmail.com">xshefcyk8@gmail.com</a></p>
+                            <p><a href="#" id="email-link">Loading...</a></p>
                         </div>
                         <div class="info-item">
                             <i class="fas fa-phone"></i>
-                            <p>Phone: (215) 730-1760</p>
-                        </div>
-                        <div class="info-item">
-                            <i class="fas fa-map-marker-alt"></i>
-                            <p>Location: Bristol, PA</p>
-                        </div>
-                        <div class="social-links">
-                            <a href="https://github.com/Shef77" class="social-link" target="_blank"><i class="fab fa-github"></i></a>
-                            <a href="#" class="social-link"><i class="fab fa-linkedin"></i></a>
-                            <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                            <p id="phone">Loading...</p>
                         </div>
                     </div>
-                    <div class="contact-form">
-                        <form action="https://formspree.io/f/xshefcyk8@gmail.com" method="POST">
-                            <div class="form-group">
-                                <label for="name">Name</label>
-                                <input type="text" id="name" name="name" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="email">Email</label>
-                                <input type="email" id="email" name="email" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="subject">Subject</label>
-                                <input type="text" id="subject" name="subject" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="message">Message</label>
-                                <textarea id="message" name="message" rows="5" required></textarea>
-                            </div>
-                            <div id="formStatus" class="form-status"></div>
-                            <button type="submit" class="btn btn-primary" id="submitBtn">Send Message</button>
-                        </form>
-                    </div>
+                    <form class="contact-form" action="https://formspree.io/f/xgvkwbbr" method="POST">
+                        <div class="form-group">
+                            <label for="name">Name</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="subject">Subject</label>
+                            <input type="text" id="subject" name="subject" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Message</label>
+                            <textarea id="message" name="message" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Send Message</button>
+                    </form>
                 </div>
             </div>
         </section>
     </main>
 
-    <!-- Footer -->
     <footer class="main-footer">
         <div class="footer-content">
-            <p>© 2024 Xavier Shefcyk - All Rights Reserved</p>
+            <p>&copy; 2024 Xavier Shefcyk. All rights reserved.</p>
             <div class="social-links">
-                <a href="https://github.com/Shef77" class="social-link" target="_blank"><i class="fab fa-github"></i></a>
-                <a href="#" class="social-link"><i class="fab fa-linkedin"></i></a>
-                <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                <a href="#" id="github-link" class="social-link" target="_blank">
+                    <i class="fab fa-github"></i>
+                </a>
+                <a href="#" id="linkedin-link" class="social-link" target="_blank">
+                    <i class="fab fa-linkedin"></i>
+                </a>
+                <a href="#" id="twitter-link" class="social-link" target="_blank">
+                    <i class="fab fa-twitter"></i>
+                </a>
             </div>
         </div>
     </footer>
 
+    <script src="../js/config.js"></script>
     <script src="../js/main.js"></script>
     <script>
-        document.querySelector('form').addEventListener('submit', function(e) {
-            const submitBtn = document.getElementById('submitBtn');
-            const formStatus = document.getElementById('formStatus');
+        // Load contact information from config
+        document.addEventListener('DOMContentLoaded', function() {
+            // Update contact information
+            document.getElementById('location').textContent = config.contact.location;
+            document.getElementById('email-link').textContent = config.contact.email;
+            document.getElementById('email-link').href = `mailto:${config.contact.email}`;
+            document.getElementById('phone').textContent = config.contact.phone;
             
-            // Disable submit button and show loading state
-            submitBtn.disabled = true;
-            submitBtn.textContent = 'Sending...';
-            formStatus.textContent = '';
-            formStatus.className = 'form-status';
+            // Update social links
+            document.getElementById('github-link').href = `https://github.com/${config.social.github}`;
+            document.getElementById('linkedin-link').href = `https://linkedin.com/in/${config.social.linkedin}`;
+            document.getElementById('twitter-link').href = `https://twitter.com/${config.social.twitter}`;
         });
     </script>
 </body>

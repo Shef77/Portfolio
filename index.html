@@ -3,291 +3,74 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Xavier Shefcyk | PC Technician & System Builder</title>
+    <title>Xavier Shefcyk | Portfolio</title>
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
 </head>
-<body>
-    <!-- Navigation -->
-    <nav class="main-nav">
-        <div class="nav-container">
-            <div class="logo">
-                <span>XS</span>
-            </div>
-            <ul class="nav-links">
-                <li><a href="index.html" class="nav-link">Home</a></li>
-                <li><a href="pages/skills.html" class="nav-link">Skills</a></li>
-                <li><a href="pages/projects.html" class="nav-link">Projects</a></li>
-                <li><a href="pages/experience.html" class="nav-link">Experience</a></li>
-                <li><a href="pages/contact.html" class="nav-link">Contact</a></li>
-            </ul>
+<body class="index-page">
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar">
+        <div class="sidebar-header">
+            <div class="logo">XS</div>
+            <h1>Xavier Shefcyk</h1>
         </div>
-    </nav>
+        <nav class="nav-links">
+            <a href="index.html" class="nav-link active">
+                <i class="fas fa-home"></i>
+                <span>Home</span>
+            </a>
+            <a href="pages/skills.html" class="nav-link">
+                <i class="fas fa-code"></i>
+                <span>Skills</span>
+            </a>
+            <a href="pages/projects.html" class="nav-link">
+                <i class="fas fa-project-diagram"></i>
+                <span>Projects</span>
+            </a>
+            <a href="pages/experience.html" class="nav-link">
+                <i class="fas fa-briefcase"></i>
+                <span>Experience</span>
+            </a>
+            <a href="pages/contact.html" class="nav-link">
+                <i class="fas fa-envelope"></i>
+                <span>Contact</span>
+            </a>
+        </nav>
+        <div class="social-links">
+            <a href="https://github.com/xshefcyk" class="social-link" target="_blank">
+                <i class="fab fa-github"></i>
+            </a>
+            <a href="https://linkedin.com/in/xshefcyk" class="social-link" target="_blank">
+                <i class="fab fa-linkedin"></i>
+            </a>
+            <a href="https://twitter.com/xshefcyk" class="social-link" target="_blank">
+                <i class="fab fa-twitter"></i>
+            </a>
+        </div>
+    </aside>
 
-    <main>
-        <section id="hero" class="hero">
+    <!-- Main Content -->
+    <main class="main-content">
+        <section class="hero">
             <div class="hero-content">
-                <h1 class="pirate-title">Xavier Shefcyk</h1>
-                <h2 class="pirate-subtitle">PC Technician, System Builder, & Software Engineer</h2>
-                <p class="pirate-bio">
-                    Passionate about both PC hardware and software development. Experienced in system building, hardware troubleshooting, and providing exceptional technical support. Also skilled in full-stack development with expertise in modern web technologies. Dedicated to creating high-performance systems and developing innovative software solutions.
-                </p>
+                <h1 class="main-title">Xavier Shefcyk</h1>
+                <p class="subtitle">PC Technician, System Builder, & Software Engineer</p>
+                <div class="bio">
+                    <p>I'm a passionate PC hardware enthusiast and software developer with a keen eye for detail and a love for building high-performance systems. With experience in both hardware assembly and full-stack development, I bring a unique perspective to every project.</p>
+                </div>
                 <div class="contact-info">
-                    <p><i class="fas fa-map-marker-alt"></i> Lancaster, PA</p>
-                    <p><i class="fas fa-envelope"></i> xshefcyk8@gmail.com</p>
-                    <p><i class="fas fa-phone"></i> 215-730-1760</p>
+                    <p><i class="fas fa-map-marker-alt"></i> Toronto, Canada</p>
+                    <p><i class="fas fa-envelope"></i> xshefcyk@gmail.com</p>
+                    <p><i class="fas fa-phone"></i> (647) 123-4567</p>
                 </div>
-            </div>
-        </section>
-
-        <section id="skills" class="skills">
-            <div class="skills-container">
-                <h2 class="section-title">Technical Expertise</h2>
-                
-                <!-- Education Card -->
-                <div class="education-card">
-                    <h3>Education</h3>
-                    <div class="education-content">
-                        <h4>Associate of Applied Science, Computer Software Engineering Technology</h4>
-                        <p>Thaddeus Stevens College of Technology, Lancaster, PA</p>
-                        <p>August 2023 – May 2025</p>
-                    </div>
-                </div>
-
-                <div class="skills-grid">
-                    <!-- Programming Languages -->
-                    <div class="skill-category">
-                        <h3><i class="fas fa-code"></i> Programming Languages</h3>
-                        <div class="skill-tags">
-                            <span class="skill-tag">HTML</span>
-                            <span class="skill-tag">CSS</span>
-                            <span class="skill-tag">Python</span>
-                            <span class="skill-tag">PostgreSQL</span>
-                            <span class="skill-tag">JavaScript</span>
-                            <span class="skill-tag">PHP</span>
-                            <span class="skill-tag">Java</span>
-                            <span class="skill-tag">Dart</span>
-                        </div>
-                    </div>
-
-                    <!-- Development Tools -->
-                    <div class="skill-category">
-                        <h3><i class="fas fa-tools"></i> Development Tools</h3>
-                        <div class="skill-tags">
-                            <span class="skill-tag">Laravel</span>
-                            <span class="skill-tag">Flask</span>
-                            <span class="skill-tag">Git</span>
-                            <span class="skill-tag">GitHub</span>
-                            <span class="skill-tag">Postman</span>
-                            <span class="skill-tag">Flutter</span>
-                        </div>
-                    </div>
-
-                    <!-- Mobile Development -->
-                    <div class="skill-category">
-                        <h3><i class="fas fa-mobile-alt"></i> Mobile Development</h3>
-                        <div class="skill-tags">
-                            <span class="skill-tag">Flutter</span>
-                            <span class="skill-tag">Dart</span>
-                            <span class="skill-tag">UI Design</span>
-                            <span class="skill-tag">Cross-Platform Apps</span>
-                            <span class="skill-tag">Widget Development</span>
-                        </div>
-                    </div>
-
-                    <!-- PC Technician Skills -->
-                    <div class="skill-category">
-                        <h3><i class="fas fa-tools"></i> PC Technician</h3>
-                        <div class="skill-tags">
-                            <span class="skill-tag">Hardware Troubleshooting</span>
-                            <span class="skill-tag">Component Repair</span>
-                            <span class="skill-tag">Diagnostic Testing</span>
-                            <span class="skill-tag">Preventive Maintenance</span>
-                            <span class="skill-tag">Hardware Installation</span>
-                            <span class="skill-tag">System Diagnostics</span>
-                        </div>
-                    </div>
-
-                    <!-- System Builder Skills -->
-                    <div class="skill-category">
-                        <h3><i class="fas fa-desktop"></i> System Builder</h3>
-                        <div class="skill-tags">
-                            <span class="skill-tag">Custom PC Building</span>
-                            <span class="skill-tag">High-Performance Systems</span>
-                            <span class="skill-tag">Component Selection</span>
-                            <span class="skill-tag">Cable Management</span>
-                            <span class="skill-tag">Thermal Management</span>
-                            <span class="skill-tag">System Optimization</span>
-                        </div>
-                    </div>
-
-                    <!-- Technical Support Skills -->
-                    <div class="skill-category">
-                        <h3><i class="fas fa-headset"></i> Technical Support</h3>
-                        <div class="skill-tags">
-                            <span class="skill-tag">Hardware Support</span>
-                            <span class="skill-tag">Software Troubleshooting</span>
-                            <span class="skill-tag">Customer Service</span>
-                            <span class="skill-tag">Problem Resolution</span>
-                            <span class="skill-tag">Technical Documentation</span>
-                            <span class="skill-tag">Remote Support</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="projects" class="projects">
-            <div class="projects-container">
-                <h2 class="section-title">Featured Projects</h2>
-                <div class="projects-grid">
-                    <!-- Software Projects -->
-                    <div class="project-card">
-                        <h3>Volunteer Village</h3>
-                        <p>A collaborative platform for managing volunteer activities and community engagement. Built with modern web technologies and featuring user authentication, event management, and real-time updates.</p>
-                        <div class="project-links">
-                            <a href="https://github.com/IsaiahMar/Volunteer_village/tree/Dev_X" class="project-link" target="_blank">View on GitHub</a>
-                        </div>
-                    </div>
-
-                    <div class="project-card">
-                        <h3>Nursing Home Website</h3>
-                        <p>Full-stack Laravel application using PHP, HTML, CSS, and JavaScript with user roles, account creation, and functionality for rosters, logs, and appointments.</p>
-                        <div class="project-links">
-                            <a href="https://github.com/MasonScarby/OldHomeManagement/tree/X" class="project-link" target="_blank">View on GitHub</a>
-                        </div>
-                    </div>
-
-                    <div class="project-card">
-                        <h3>Restaurant Website</h3>
-                        <p>Local server website allowing customers to purchase food with customer and employee sides using HTML, CSS, JavaScript, and SQL.</p>
-                        <div class="project-links">
-                            <a href="https://github.com/alexw1se/180final/tree/x" class="project-link" target="_blank">View on GitHub</a>
-                        </div>
-                    </div>
-
-                    <div class="project-card">
-                        <h3>E-commerce Website</h3>
-                        <p>Multi-vendor e-commerce platform built with Flask (Python) for back-end, and HTML/CSS for front-end, supporting admin, vendor, and customer roles.</p>
-                        <div class="project-links">
-                            <a href="https://github.com/JoshKlein16/170-final/tree/dev_xavior" class="project-link" target="_blank">View on GitHub</a>
-                        </div>
-                    </div>
-
-                    <div class="project-card">
-                        <h3>Exam Management System</h3>
-                        <p>An efficient system for managing examinations, including test creation, student tracking, and result management. Built with a focus on user experience and administrative functionality.</p>
-                        <div class="project-links">
-                            <a href="https://github.com/Dzook1/Exam-Management/tree/dev_x" class="project-link" target="_blank">View on GitHub</a>
-                        </div>
-                    </div>
-
-                    <!-- Hardware Projects -->
-                    <div class="project-card">
-                        <h3>Custom Build for Friend</h3>
-                        <p>Solid 1080p gaming and content creation PC featuring AIO cooling, optimized for performance and aesthetics. Built with careful attention to cable management and component selection.</p>
-                        <div class="project-links">
-                            <a href="#" class="project-link view-pc-btn" data-image="images/mikespc.jpg">View Build</a>
-                        </div>
-                    </div>
-
-                    <div class="project-card">
-                        <h3>Personal Workstation</h3>
-                        <p>High-performance workstation for gaming, coding, and content creation, featuring a 3060ti and RGB lighting.</p>
-                        <div class="project-links">
-                            <a href="#" class="project-link view-pc-btn" data-image="images/personalpc.jpg">View Build</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- PC Build Modal -->
-        <div class="build-modal" id="buildModal">
-            <div class="modal-content">
-                <div class="build-image-container">
-                    <img src="" alt="PC Build" id="buildImage" class="build-image">
-                </div>
-                <div class="build-details">
-                    <h3 class="build-title">Build Details</h3>
-                    <div class="parts-list">
-                        <!-- Parts will be populated by JavaScript -->
-                    </div>
-                    <button class="close-modal">×</button>
-                </div>
-            </div>
-        </div>
-
-        <section id="experience" class="experience">
-            <div class="experience-container">
-                <h2 class="section-title">Professional Experience</h2>
-                <div class="experience-timeline">
-                    <div class="experience-card">
-                        <div class="experience-header">
-                            <h3>Crew Trainer</h3>
-                            <p class="company">McDonald's, Lancaster, PA</p>
-                            <p class="date">2021 – Present</p>
-                        </div>
-                        <p class="experience-description">
-                            • Train new employees on food preparation, safety procedures, and customer service<br>
-                            • Maintain high standards of food quality and cleanliness<br>
-                            • Handle customer inquiries and resolve service issues<br>
-                            • Work efficiently in fast-paced environment<br>
-                            • Ensure compliance with company policies and procedures
-                        </p>
-                    </div>
-
-                    <div class="experience-card">
-                        <div class="experience-header">
-                            <h3>Floor Associate</h3>
-                            <p class="company">HomeSense, Lancaster, PA</p>
-                            <p class="date">2020 – 2021</p>
-                        </div>
-                        <p class="experience-description">
-                            • Maintained store organization and cleanliness<br>
-                            • Assisted customers with product location and selection<br>
-                            • Processed merchandise and maintained inventory<br>
-                            • Operated cash register and handled transactions<br>
-                            • Collaborated with team members to achieve store goals
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="contact" class="contact">
-            <div class="contact-container">
-                <h2 class="section-title">Get in Touch</h2>
-                <div class="contact-card">
-                    <div class="contact-icon">
-                        <i class="fas fa-envelope"></i>
-                    </div>
-                    <h3>Email</h3>
-                    <a href="mailto:xshefcyk8@gmail.com">xshefcyk8@gmail.com</a>
-                </div>
-                <div class="contact-card">
-                    <div class="contact-icon">
-                        <i class="fas fa-phone"></i>
-                    </div>
-                    <h3>Phone</h3>
-                    <a href="tel:215-730-1760">215-730-1760</a>
+                <div class="cta-buttons">
+                    <a href="pages/projects.html" class="btn btn-primary">View My Projects</a>
+                    <a href="pages/contact.html" class="btn btn-secondary">Contact Me</a>
                 </div>
             </div>
         </section>
     </main>
-
-    <!-- Footer -->
-    <footer class="main-footer">
-        <div class="footer-content">
-            <p>© 2024 Xavier Shefcyk - All Rights Reserved</p>
-            <div class="social-links">
-                <a href="https://github.com/Shef77" class="social-link" target="_blank"><i class="fab fa-github"></i></a>
-                <a href="#" class="social-link"><i class="fab fa-linkedin"></i></a>
-                <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
-            </div>
-        </div>
-    </footer>
 
     <script src="js/main.js"></script>
 </body>
