@@ -1,21 +1,53 @@
 // Wait for DOM to be fully loaded
 document.addEventListener('DOMContentLoaded', function() {
-    // Smooth scrolling for navigation
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function (e) {
-            e.preventDefault();
-            const targetId = this.getAttribute('href');
-            if (targetId && targetId !== '#') {  // Check if href is not empty or just '#'
+    // Page transition effect
+    document.querySelectorAll('.nav-link').forEach(link => {
+        link.addEventListener('click', function(e) {
+            if (this.getAttribute('href').startsWith('#')) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
                 const targetSection = document.querySelector(targetId);
                 if (targetSection) {
+                    // Create a smooth transition effect
+                    targetSection.style.opacity = '0';
+                    targetSection.style.transform = 'translateY(20px)';
+                    targetSection.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+                    
+                    // Scroll to the section
                     targetSection.scrollIntoView({
                         behavior: 'smooth',
                         block: 'start'
                     });
+                    
+                    // Fade in the section
+                    setTimeout(() => {
+                        targetSection.style.opacity = '1';
+                        targetSection.style.transform = 'translateY(0)';
+                    }, 100);
                 }
+            } else {
+                // For external links, add transition effect
+                e.preventDefault();
+                const href = this.getAttribute('href');
+                
+                // Fade out current page
+                document.body.style.opacity = '0';
+                document.body.style.transition = 'opacity 0.5s ease';
+                
+                // Navigate after fade out
+                setTimeout(() => {
+                    window.location.href = href;
+                }, 500);
             }
         });
     });
+
+    // Initial page load animation
+    document.body.style.opacity = '0';
+    document.body.style.transition = 'opacity 0.5s ease';
+    setTimeout(() => {
+        document.body.style.opacity = '1';
+    }, 100);
 
     // Animate elements on scroll
     const animateOnScroll = () => {
@@ -47,18 +79,136 @@ document.addEventListener('DOMContentLoaded', function() {
     const modal = document.getElementById('buildModal');
     const modalImg = document.getElementById('buildImage');
     const viewButtons = document.querySelectorAll('.view-pc-btn');
+    const partsList = document.querySelector('.parts-list');
+    const buildTitle = document.querySelector('.build-title');
+    const closeModalBtn = document.querySelector('.close-modal');
+
+    // Build specifications
+    const buildSpecs = {
+        'images/personalpc.jpg': {
+            title: 'Personal Workstation',
+            parts: [
+                {
+                    name: 'CPU',
+                    specs: 'AMD Ryzen 7 5800XT',
+                    link: 'https://www.bestbuy.com/site/amd-ryzen-7-5800xt-8-core-16-thread-3-8-ghz-4-8-ghz-max-boost-socket-am4-unlocked-desktop-processor-silver/6589129.p?skuId=6589129'
+                },
+                {
+                    name: 'GPU',
+                    specs: 'Aourus NVIDIA GeForce RTX 3060 Ti',
+                    link: 'https://www.amazon.com/GIGABYTE-REV2-0-Graphics-WINDFORCE-GV-N306TAORUS/dp/B09C43DLXG'
+                },
+                {
+                    name: 'RAM',
+                    specs: 'Team Group T-Force Vulcan 4x8 32GB DDR4 3200MHz',
+                    link: 'https://www.amazon.com/TEAMGROUP-T-Force-Vulcan-3200MHz-Desktop/dp/B07T637L7T/ref=sr_1_1?crid=1T0MGXLMW1C3F&dib=eyJ2IjoiMSJ9.jTztC_m2epiMGTTv5yKdR-x9c1YvNcoDCfLdqPt68LJiFGioUGMXgxojwnqCu66XYtIFh-I3zVZiY54uampGxa5McneTBrNcfdDp2Vct-bgm4OIcJ4QlGsffdY--DXNKoCJNUfFB-2TEwP_rO_UMBWknsLhwKLlIVFcds4s2Eh_bcm_24cphvCiTT7-5G_0lGw3JHJzf3tdiBKOP3zytIyM15ILtaBZaq_vqXGL-xP1AW3nhRf5wVCO1afFsxtkvcCRS7vhOtebAYFMuTdPUeYTs75k__h0VKlXQauNxiZ8.7OrBezK0vCO3TGLWIRxuYepG_7XEWYXbnxdH78GZ7BY&dib_tag=se&keywords=team%2Bgroup%2Bddr4&qid=1745288487&s=electronics&sprefix=team%2Bgroup%2Celectronics%2C288&sr=1-1&th=1'
+                },
+                {
+                    name: 'Storage',
+                    specs: '1TB 2.5" Team Group T-Force SSD + WDBLUE 1TB HDD',
+                    link: 'https://www.amazon.com/TEAMGROUP-T-Force-Vulcan-Internal-T253TZ001T0C101/dp/B09WMP5B5N/ref=sr_1_3?crid=3Q6PLPIXWAOAL&dib=eyJ2IjoiMSJ9.s0IktfFf-YkR5EuwnNOusaowiU_7jk4deI8-3QMFVq13xOA2cHVpF-5Lcf78atNw1v-SNw2pA3UZ0EbPKQzPBU_AHCRPR-1seX0YjC_JaTB7191_oJrE1jL5KXZVVXcUp28GpLjiae3-EUGW8DNefKhwid69IL0IPH7F_8P5VSX9znH2Pn31AOtQdHH7XRVw8WD3VvP5t7FuzsCowDqip-CJU19DTPPIQRLqQQcwhkaIUedayCJX6PqBa0G1UO8656aoEQmCdA9hPcnx6oHaHitG-zHzjJ5ew2BLEReCFOg.0Dz2mwFa0sZf4vcevhUgLNwelSdEVVlSeCi_9gLCzPI&dib_tag=se&keywords=team+group+ssd&qid=1745288522&s=electronics&sprefix=team+group+ssd%2Celectronics%2C289&sr=1-3 & https://www.amazon.com/WD-Notebook-Internal-5400RPM-WD10JPVX/dp/B01EMXO3DK/ref=sr_1_6?crid=3BJU3GLI52PCS&dib=eyJ2IjoiMSJ9.z-30Gmf-ratRvfyZpyILNqDaOiz6u1WWltzUNgi9YV1Z-QN7JfMHeuTwxieuawbunnQqp2cqDf504OUeNSdlEz9LNtl-awRIQHumEyWdPXe18ntZJNYl8SvPZ9oXMsKHiYF11Rkpb_f6v9ckELKz1optfIke89bsiO4XY_-1Xj5eNUqCMSFP72dY5o4bgtDc-hip5ecS5uz3U5KH2oI5hpezXc7hd05AQ8M3rxnqrwpXiyrooqoHTbIpBaqkwgxql2fZvGQ09Pu4TK_0m9tsC10dSzbYedizYVxZU8W9UMA.hIqLcXCMvWTGHV6iG5BvtClQC5kBmgy-nSsJEeHkm4w&dib_tag=se&keywords=wd+blue+hard+drive+1tb&qid=1745288555&s=electronics&sprefix=wd+blue+hard+drive+1tb%2Celectronics%2C83&sr=1-6'
+                },
+                {
+                    name: 'Motherboard',
+                    specs: 'Asrock B550M Phantom 4 Gaming',
+                    link: 'https://www.amazon.com/ASRock-B550-Supports-Processors-Motherboard/dp/B089VTZ83Q/ref=sr_1_1?crid=PTZOX0BB83FC&dib=eyJ2IjoiMSJ9.bUfqMzVWK34U_Ldyf76s-Mp82uI6-WJMWbrQua8-kEjU3rgoXd4uJ1tJnoXk2pFb05yySOAmoQyi3ltirpoilZ-1Cxeiquj-1eksWmHXY5iMGxAYPhgyHF0yqZ2cRuoCK7Vu5G30_KCrTkomwWiBg1NHrl5FVBK7urpezn6aljPqxanrevZuIcYuWxEsoSK2GMmUKEJNqwp0XP1ndHBpF_VAxtKYU6spTK1VgNjIfKmMzaMUI-6GS0XuDAVq9pznyTyjJh7oM1gsApnwv21oyWjzqouotI7C3dZYsQFLo5Q.7AkG2cebmLL-JEmV2yrwXKfGKxzLJVEuDo1e4STZs7E&dib_tag=se&keywords=asrock+b550+phantom+gaming+4&qid=1745288581&s=electronics&sprefix=asrock+b550+phantom+gaming+4%2Celectronics%2C123&sr=1-1'
+                },
+                {
+                    name: 'Cooling',
+                    specs: 'Ryzen Wraith Spire Stealth',
+                    link: 'https://www.amazon.com/AMD-Wraith-Prism-RGB-Controlled-Illumination/dp/B09JZM682W/ref=sr_1_2?crid=192ZNPJG8EUIC&dib=eyJ2IjoiMSJ9.QgRqtEsFrha_flK1mg9XZ_dIf9kqtxR5beyKGey7RroDcQ86-aFN4YarGN4-qdnpL_WZY_Bv5Wj6XiEn5I5PobYaWnUXHNHwsx4-Tw9SeQIyBtjbVn_aV7RxKy9IAmalP4etncF_EROOWmAwcGENdq1Uew2cd0IM59MOB2bhj-jVIVT4xlBtrdYXKaFgv_aPb3icf2YPWhfx7kQfVCqM7m9uulc8a-aMgjFRwVrk4Rv6tLsmgTnskCqQ4NMUVQlsapgFwvohdVPX9mYdB51CEVuVkuAG-_N3--gpwIpmc34.1mnEsYB1hnNiJlufuRa4zZQQL_442X5RWCBLnIKmcwk&dib_tag=se&keywords=amd+wraith+cooler&qid=1745288611&s=electronics&sprefix=amd+wraith%2Celectronics%2C177&sr=1-2&ufe=app_do%3Aamzn1.fos.9fe8cbfa-bf43-43d1-a707-3f4e65a4b666'
+                },
+                {
+                    name: 'Case',
+                    specs: 'Montech XR',
+                    link: 'https://www.amazon.com/Mid-Tower-Pre-Installed-Full-View-Wood-Grain-Interface/dp/B0D5PHHCK5/ref=sr_1_1?crid=NW8IGAMLI1IG&dib=eyJ2IjoiMSJ9.rwAX5efFy7IcINTzakQxRsC7kdfGmwznZWrBs787V_8jCzRQ_YyMrb9HZXLdCehZLHjArWGGuj7E-0tOPeXlHXyAg2UhQTLvnFoAdO8q5m7vQkvo6InuRuQmm-WpYnrTgInOCyfKG2WVaPFMTIH0LIgBbALuPgJu-n9ioTKpNESJ6_GXwB3VMBmOH2mTXcVKaYd0a2joqYooYN6YKFB79j_9-h_cGUWTnY8nu9rR1pcdYotbWNvucVqAP9ska2vCjADhKfzIOq9BYbH5LD5AKXwR5cpSXwrF05yPrFs5_Sc.HD-mKTUirPAZSP00nKgIhgyrUbg1gNgbp1Iis5zAdXo&dib_tag=se&keywords=Montech+xr&qid=1745288596&s=electronics&sprefix=mon%2Celectronics%2C832&sr=1-1'
+                },
+                {
+                    name: 'Power Supply',
+                    specs: 'Evga 80+ Gold 700W',
+                    link: 'https://www.amazon.com/EVGA-100-BR-0700-K1-Bronze-Power-Supply/dp/B07DTP6MWS/ref=sr_1_1?crid=2RFRQ6A1DKE00&dib=eyJ2IjoiMSJ9.q6lkglL8NB60tX-Hm3WJy8ed3Y9HJ-3KHR2G3EE54C9pxUDCv634QOStrds5aUwrdwt7F7Fl0UviCKtkWaRVJmYdgmDMG1BTSzPSblZIRDM6FPJ7xEAuu8YVno8QillgNXQVELGBOFdXIXYeTb6ezNYpcDmy5kIrsOdm9eS6Y_r2drPsWG4Cdc9ddKazthMsPbISrutLGRQ21xFYKZnGupN5EMgSJHQY_EQ-VwVkCVzB3sjyemFuIemXwT3Rpr_McyUlr69h5L-16EncC3U1MyMV2_2mTppfK46DkWKHYKA.wdCEGHYk4VVZJ-pgBAhmzqScXvTUZqg0sf4EAcKO8c8&dib_tag=se&keywords=evga+700w+power+supply&qid=1745288633&s=electronics&sprefix=evga+700%2Celectronics%2C143&sr=1-1&ufe=app_do%3Aamzn1.fos.9fe8cbfa-bf43-43d1-a707-3f4e65a4b666'
+                }
+            ]
+        },
+        'images/mikespc.jpg': {
+            title: 'Custom Build for Friend',
+            parts: [
+                {
+                    name: 'CPU',
+                    specs: 'Intel Core i5-12600K',
+                    link: 'https://www.amazon.com/Intel-i5-12600K-Desktop-Processor-Unlocked/dp/B09FX4D72T/ref=sr_1_1?crid=3RXQSG51Q7GW4&dib=eyJ2IjoiMSJ9.3Sdynq378dIgQBX0ov4nSt_61yqpjN21ZS7rLyrt1VsYnkkgYsL83GeQCQlfHzrF0b1MpASBRrJMQgQ81OmgLlVirc9Lx8K9ZdKVxLSZxaZBNgecLT1l_iuwTTox16bK9h2JDZav7ylzXMYOfeCGlQy4jjRxI_QXHVo0TBVDKHsjah64K9pMqkrfSe7ctlR4R6BywuPtV8GFVK2WqM8Vc5UfMzYyvuY_ffDHAoBFrl0gKJi_dGPq0BBc2Mhi1irYq9K6s4MaEjS2JLiwwm9Va1xdnreNgmhmVojEd4EAfa8.Yn3ovG-aVLZX0e3-__i9vVH8HQ5I9EtoyCxlK-NUaL4&dib_tag=se&keywords=i5+12600k&qid=1745288652&s=electronics&sprefix=i5+12600k%2Celectronics%2C79&sr=1-1'
+                },
+                {
+                    name: 'GPU',
+                    specs: 'ASUS Low Profile NVIDIA GeForce RTX 2060',
+                    link: 'https://www.ebay.com/sch/i.html?_nkw=asus+single+fan+2060&_sacat=0&_from=R40&_trksid=p3671980.m570.l1313'
+                },
+                {
+                    name: 'RAM',
+                    specs: 'Corsair Vengeance LPX 16GB DDR4 3200MHz',
+                    link: 'https://www.bestbuy.com/site/corsair-vengeance-lpx-16gb-2x8gb-ddr4-3600mhz-c18-udimm-desktop-memory-black/6412826.p?skuId=6412826&extStoreId=1197&utm_source=feed&ref=212&loc=19589565301&gclsrc=aw.ds&gad_source=1&gclid=Cj0KCQjw2ZfABhDBARIsAHFTxGw92FvSghJXHR8nYwQGJnC2HeKatqo1jq4dJyFT6SPQoQ9hM-iccg0aArTrEALw_wcB'
+                },
+                {
+                    name: 'Storage',
+                    specs: '1TB NVMe SSD + 1TB HDD',
+                    link: 'https://www.amazon.com/TEAMGROUP-T-Force-Vulcan-Internal-T253TZ001T0C101/dp/B09WMP5B5N/ref=sr_1_3?crid=3Q6PLPIXWAOAL&dib=eyJ2IjoiMSJ9.s0IktfFf-YkR5EuwnNOusaowiU_7jk4deI8-3QMFVq13xOA2cHVpF-5Lcf78atNw1v-SNw2pA3UZ0EbPKQzPBU_AHCRPR-1seX0YjC_JaTB7191_oJrE1jL5KXZVVXcUp28GpLjiae3-EUGW8DNefKhwid69IL0IPH7F_8P5VSX9znH2Pn31AOtQdHH7XRVw8WD3VvP5t7FuzsCowDqip-CJU19DTPPIQRLqQQcwhkaIUedayCJX6PqBa0G1UO8656aoEQmCdA9hPcnx6oHaHitG-zHzjJ5ew2BLEReCFOg.0Dz2mwFa0sZf4vcevhUgLNwelSdEVVlSeCi_9gLCzPI&dib_tag=se&keywords=team+group+ssd&qid=1745288522&s=electronics&sprefix=team+group+ssd%2Celectronics%2C289&sr=1-3 & https://www.amazon.com/WD-Notebook-Internal-5400RPM-WD10JPVX/dp/B01EMXO3DK/ref=sr_1_6?crid=3BJU3GLI52PCS&dib=eyJ2IjoiMSJ9.z-30Gmf-ratRvfyZpyILNqDaOiz6u1WWltzUNgi9YV1Z-QN7JfMHeuTwxieuawbunnQqp2cqDf504OUeNSdlEz9LNtl-awRIQHumEyWdPXe18ntZJNYl8SvPZ9oXMsKHiYF11Rkpb_f6v9ckELKz1optfIke89bsiO4XY_-1Xj5eNUqCMSFP72dY5o4bgtDc-hip5ecS5uz3U5KH2oI5hpezXc7hd05AQ8M3rxnqrwpXiyrooqoHTbIpBaqkwgxql2fZvGQ09Pu4TK_0m9tsC10dSzbYedizYVxZU8W9UMA.hIqLcXCMvWTGHV6iG5BvtClQC5kBmgy-nSsJEeHkm4w&dib_tag=se&keywords=wd+blue+hard+drive+1tb&qid=1745288555&s=electronics&sprefix=wd+blue+hard+drive+1tb%2Celectronics%2C83&sr=1-6'
+                },
+                {
+                    name: 'Motherboard',
+                    specs: 'ASRock B660M Pro',
+                    link: 'https://www.amazon.com/ASRock-LGA1700-Compatible-MicroATX-Motherboard/dp/B09NZPD6WD'
+                },
+                {
+                    name: 'Cooling',
+                    specs: 'CoolerMaster MasterLiquid ML240L RGB',
+                    link: 'https://www.amazon.com/CoolerMaster-MasterLiquid-Close-Loop-Cooler-SickleFlow/dp/B086BYYFG5/ref=sr_1_1?crid=4BVGOZQOD5MX&dib=eyJ2IjoiMSJ9.xWuiH84gNYk1DahjA1Dqv04Y73VWzZIt6W9WLiBn2Zv9y0eFY_rB6GKB6nAQzN5qtQUC5TR6hmTeJmMoez-8Rm2085AOg40ahnvbwVvQLvv89hPlj6dniwlB2CMK2Dks1OR5qd9RGs6y2y7Ks5b8lEX_8Rs9pAyuIc02qVAiXIwtpgIIlyUp6YCeuYfZSXOh_fhKzihPMMjJMTW2AS7RkUc-woIRLEzanazn6jRGlFNVnV1L_BLdCgyHRBWSP2SonbgZrCLglcESwreAofuAof0QhB4gtZZVKKa9tH-6S68.AJQtPUY79MUAwRHlSAiysq1ClOlB4LJ4ykMZKax0338&dib_tag=se&keywords=CoolerMaster+MasterLiquid+ML240L+RGB&qid=1745288880&s=electronics&sprefix=cooler+master+masterliquid+ml240l+rgb%2Celectronics%2C252&sr=1-1'
+                },
+                {
+                    name: 'Case',
+                    specs: 'ATX Case',
+                    link: 'https://www.googleadservices.com/pagead/aclk?sa=L&ai=DChcSEwjf8PT3y-qMAxWZRP8BHYWfCvEYABAHGgJtZA&co=1&gclid=Cj0KCQjw2ZfABhDBARIsAHFTxGwW31gOY2bnJ5mUgB5yb71oqxmAhwji0whtuGP0pL4O7K_qhQUFNSsaAnvDEALw_wcB&ohost=www.google.com&cid=CAESV-D2XkgMVfeDzeruDUm-WPGa6UG1hzBB4bmxV54_WHK6S2wd8K6nxx4jos35Cvf7_PJNrHIqyEi1120avOpcpPIq3ehQtIRLdlG3eL9ON9mvHrmyFr-lZA&sig=AOD64_1XUW5ZKf033erYrlJlDh4-8JXfIw&ctype=5&q=&ved=2ahUKEwiAtO_3y-qMAxX7rYkEHVW_CpMQ9aACKAB6BAgFECo&adurl='
+                },
+                {
+                    name: 'Power Supply',
+                    specs: 'EVGA 80+ Gold 750W',
+                    link: 'https://www.google.com/search?client=opera-gx&q=evga+750+w+gold+powersuppli&sourceid=opera&ie=UTF-8&oe=UTF-8#oshopproduct=gid:8082638237701924797,mid:576462248469204261,oid:979582961067417899,iid:7481590902781232799,rds:UENfODA4MjYzODIzNzcwMTkyNDc5N3xQUk9EX1BDXzgwODI2MzgyMzc3MDE5MjQ3OTc%3D,pvt:hg,pvo:3&oshop=apv&pvs=0'
+                }
+            ]
+        }
+    };
+
+    // Function to populate parts list
+    function populatePartsList(imageSrc) {
+        const build = buildSpecs[imageSrc];
+        if (!build) return;
+
+        buildTitle.textContent = build.title;
+        partsList.innerHTML = '';
+
+        build.parts.forEach(part => {
+            const partItem = document.createElement('div');
+            partItem.className = 'part-item';
+            partItem.innerHTML = `
+                <div class="part-name">${part.name}</div>
+                <div class="part-specs">${part.specs}</div>
+                <a href="${part.link}" target="_blank" rel="noopener noreferrer" class="view-part-btn">View</a>
+            `;
+            partsList.appendChild(partItem);
+        });
+    }
 
     // Function to open modal
     function openModal(imageSrc) {
         modal.style.display = 'flex';
         modalImg.src = imageSrc;
-        document.body.style.overflow = 'hidden'; // Prevent scrolling when modal is open
+        populatePartsList(imageSrc);
+        document.body.style.overflow = 'hidden';
     }
 
     // Function to close modal
     function closeModal() {
         modal.style.display = 'none';
-        document.body.style.overflow = 'auto'; // Re-enable scrolling
+        document.body.style.overflow = 'auto';
     }
 
     // Add click event to all view buttons
@@ -72,12 +222,15 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // Close modal when clicking outside the image
+    // Close modal when clicking outside the modal content
     modal.addEventListener('click', function(e) {
         if (e.target === modal) {
             closeModal();
         }
     });
+
+    // Close modal when clicking the close button
+    closeModalBtn.addEventListener('click', closeModal);
 
     // Close modal when pressing Escape key
     document.addEventListener('keydown', function(e) {
