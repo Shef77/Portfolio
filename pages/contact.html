@@ -140,6 +140,12 @@
                             submitBtn.disabled = false;
                         }, 2000);
                         
+                        // Show specific error message to user
+                        if (error.status === 412) {
+                            alert('Email service needs to be reconfigured. Please try again later.');
+                        } else {
+                            alert('Failed to send message. Please try again later.');
+                        }
                         console.error('Failed to send message:', error);
                     });
             });
