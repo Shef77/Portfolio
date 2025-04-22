@@ -92,15 +92,15 @@
         // Load contact information from config
         document.addEventListener('DOMContentLoaded', function() {
             // Update contact information
-            document.getElementById('location').textContent = config.contact.location;
-            document.getElementById('email-link').textContent = config.contact.email;
-            document.getElementById('email-link').href = `mailto:${config.contact.email}`;
-            document.getElementById('phone').textContent = config.contact.phone;
+            document.getElementById('location').textContent = 'Bristol, Pennsylvania';
+            document.getElementById('email-link').textContent = 'xshefcyk8@gmail.com';
+            document.getElementById('email-link').href = 'mailto:xshefcyk8@gmail.com';
+            document.getElementById('phone').textContent = '(215) 730-1760';
             
             // Update social links
-            document.getElementById('github-link').href = `https://github.com/${config.social.github}`;
-            document.getElementById('linkedin-link').href = `https://linkedin.com/in/${config.social.linkedin}`;
-            document.getElementById('twitter-link').href = `https://twitter.com/${config.social.twitter}`;
+            document.getElementById('github-link').href = 'https://github.com/Shef77';
+            document.getElementById('linkedin-link').href = 'https://linkedin.com/in/xshefcyk';
+            document.getElementById('twitter-link').href = 'https://twitter.com/xshefcyk';
 
             // Handle form submission
             const contactForm = document.getElementById('contact-form');
