@@ -28,15 +28,15 @@
                         <h3>Get in Touch</h3>
                         <div class="info-item">
                             <i class="fas fa-map-marker-alt"></i>
-                            <p id="location">Loading...</p>
+                            <p>Bristol, Pennsylvania</p>
                         </div>
                         <div class="info-item">
                             <i class="fas fa-envelope"></i>
-                            <p><a href="#" id="email-link">Loading...</a></p>
+                            <p><a href="mailto:xshefcyk8@gmail.com">xshefcyk8@gmail.com</a></p>
                         </div>
                         <div class="info-item">
                             <i class="fas fa-phone"></i>
-                            <p id="phone">Loading...</p>
+                            <p>(215) 730-1760</p>
                         </div>
                     </div>
                     <form class="contact-form" id="contact-form">
@@ -81,28 +81,25 @@
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
-    <script src="../js/config.js"></script>
-    <script src="../js/main.js"></script>
     <script>
         // Initialize EmailJS
         (function() {
-            emailjs.init("BSZKOKzPOhDIbleM_"); // You'll get this from EmailJS
+            emailjs.init("YOUR_PUBLIC_KEY");
         })();
 
-        // Load contact information from config
-        document.addEventListener('DOMContentLoaded', function() {
-            // Update contact information
-            document.getElementById('location').textContent = 'Bristol, Pennsylvania';
-            document.getElementById('email-link').textContent = 'xshefcyk8@gmail.com';
-            document.getElementById('email-link').href = 'mailto:xshefcyk8@gmail.com';
-            document.getElementById('phone').textContent = '(215) 730-1760';
-            
-            // Update social links
-            document.getElementById('github-link').href = 'https://github.com/Shef77';
-            document.getElementById('linkedin-link').href = 'https://linkedin.com/in/xshefcyk';
-            document.getElementById('twitter-link').href = 'https://twitter.com/xshefcyk';
+        // Set contact information immediately
+        document.getElementById('location').textContent = 'Bristol, Pennsylvania';
+        document.getElementById('email-link').textContent = 'xshefcyk8@gmail.com';
+        document.getElementById('email-link').href = 'mailto:xshefcyk8@gmail.com';
+        document.getElementById('phone').textContent = '(215) 730-1760';
+        
+        // Set social links
+        document.getElementById('github-link').href = 'https://github.com/Shef77';
+        document.getElementById('linkedin-link').href = 'https://linkedin.com/in/xshefcyk';
+        document.getElementById('twitter-link').href = 'https://twitter.com/xshefcyk';
 
-            // Handle form submission
+        // Handle form submission
+        document.addEventListener('DOMContentLoaded', function() {
             const contactForm = document.getElementById('contact-form');
             contactForm.addEventListener('submit', function(e) {
                 e.preventDefault();
@@ -115,7 +112,7 @@
                 submitBtn.disabled = true;
 
                 // Send email using EmailJS
-                emailjs.sendForm('service_ioovlgf', 'template_8j0pb2y', contactForm)
+                emailjs.sendForm('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', contactForm)
                     .then(function() {
                         // Show success message
                         submitBtn.innerHTML = '<i class="fas fa-check"></i> Message Sent!';
