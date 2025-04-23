@@ -12,15 +12,6 @@ A unique and fun portfolio website themed around One Piece, showcasing your web 
 - Smooth scrolling and hover effects
 - Contact form with PHP backend
 
-## Setup Instructions
-
-1. Clone this repository to your local machine
-2. Make sure you have a web server with PHP support (XAMPP, WAMP, or similar)
-3. Place the files in your web server's root directory
-4. Update the contact form email in `php/contact.php` with your email address
-5. Add your profile image to the `images` directory as `profile.jpg`
-6. Customize the content in `index.html` with your information
-7. Add your projects to the projects section
 
 ## Customization
 
@@ -32,18 +23,7 @@ The color scheme can be easily modified in the `:root` section of `css/styles.cs
 - `--light-color`: Text color (default: #FFFFFF)
 - `--ocean-blue`: Ocean theme color (default: #0066CC)
 
-### Adding Projects
-To add a new project, copy and paste the project card template in the projects section:
-```html
-<div class="project-card">
-    <h3>Project Title</h3>
-    <p>Project Description</p>
-    <div class="project-links">
-        <a href="#" class="project-link">View Live</a>
-        <a href="#" class="project-link">Source Code</a>
-    </div>
-</div>
-```
+
 
 ### Contact Form
 The contact form uses PHP to send emails. Make sure to:
