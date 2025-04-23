@@ -82,24 +82,18 @@
 
     <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
     <script>
-        // Initialize EmailJS
+
         (function() {
-            emailjs.init("YOUR_PUBLIC_KEY");
+            emailjs.init("BSZKOKzPOhDIbleM_"); // Replace with your actual public key
         })();
 
-        // Set contact information immediately
-        document.getElementById('location').textContent = 'Bristol, Pennsylvania';
-        document.getElementById('email-link').textContent = 'xshefcyk8@gmail.com';
-        document.getElementById('email-link').href = 'mailto:xshefcyk8@gmail.com';
-        document.getElementById('phone').textContent = '(215) 730-1760';
-        
         // Set social links
-        document.getElementById('github-link').href = 'https://github.com/Shef77';
-        document.getElementById('linkedin-link').href = 'https://linkedin.com/in/xshefcyk';
-        document.getElementById('twitter-link').href = 'https://twitter.com/xshefcyk';
-
-        // Handle form submission
         document.addEventListener('DOMContentLoaded', function() {
+            document.getElementById('github-link').href = 'https://github.com/Shef77';
+            document.getElementById('linkedin-link').href = 'https://linkedin.com/in/xshefcyk';
+            document.getElementById('twitter-link').href = 'https://twitter.com/xshefcyk';
+
+            // Handle form submission
             const contactForm = document.getElementById('contact-form');
             contactForm.addEventListener('submit', function(e) {
                 e.preventDefault();
@@ -112,7 +106,7 @@
                 submitBtn.disabled = true;
 
                 // Send email using EmailJS
-                emailjs.sendForm('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', contactForm)
+                emailjs.sendForm('service_ioovlgf', 'template_8j0pb2y', contactForm)
                     .then(function() {
                         // Show success message
                         submitBtn.innerHTML = '<i class="fas fa-check"></i> Message Sent!';
@@ -140,13 +134,8 @@
                             submitBtn.disabled = false;
                         }, 2000);
                         
-                        // Show specific error message to user
-                        if (error.status === 412) {
-                            alert('Email service needs to be reconfigured. Please try again later.');
-                        } else {
-                            alert('Failed to send message. Please try again later.');
-                        }
                         console.error('Failed to send message:', error);
+                        alert('Failed to send message. Please try again later.');
                     });
             });
         });
