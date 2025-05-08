@@ -135,8 +135,8 @@ document.addEventListener('DOMContentLoaded', function() {
             parts: [
                 {
                     name: 'CPU',
-                    specs: 'Intel Core i5-12600K',
-                    link: 'https://www.amazon.com/Intel-i5-12600K-Desktop-Processor-Unlocked/dp/B09FX4D72T/ref=sr_1_1?crid=3RXQSG51Q7GW4&dib=eyJ2IjoiMSJ9.3Sdynq378dIgQBX0ov4nSt_61yqpjN21ZS7rLyrt1VsYnkkgYsL83GeQCQlfHzrF0b1MpASBRrJMQgQ81OmgLlVirc9Lx8K9ZdKVxLSZxaZBNgecLT1l_iuwTTox16bK9h2JDZav7ylzXMYOfeCGlQy4jjRxI_QXHVo0TBVDKHsjah64K9pMqkrfSe7ctlR4R6BywuPtV8GFVK2WqM8Vc5UfMzYyvuY_ffDHAoBFrl0gKJi_dGPq0BBc2Mhi1irYq9K6s4MaEjS2JLiwwm9Va1xdnreNgmhmVojEd4EAfa8.Yn3ovG-aVLZX0e3-__i9vVH8HQ5I9EtoyCxlK-NUaL4&dib_tag=se&keywords=i5+12600k&qid=1745288652&s=electronics&sprefix=i5+12600k%2Celectronics%2C79&sr=1-1'
+                    specs: 'Intel Core i5-10600K',
+                    link: 'https://www.amazon.com/Intel-i5-10600K-Desktop-Processor-Unlocked/dp/B086MHSH2C'
                 },
                 {
                     name: 'GPU',
@@ -155,8 +155,8 @@ document.addEventListener('DOMContentLoaded', function() {
                 },
                 {
                     name: 'Motherboard',
-                    specs: 'ASRock B660M Pro',
-                    link: 'https://www.amazon.com/ASRock-LGA1700-Compatible-MicroATX-Motherboard/dp/B09NZPD6WD'
+                    specs: 'ASRock Z490 Pro4',
+                    link: 'https://www.amazon.com/ASRock-Z490-PRO4-Processors-Motherboard/dp/B087TD675B'
                 },
                 {
                     name: 'Cooling',
