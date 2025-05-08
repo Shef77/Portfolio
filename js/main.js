@@ -178,25 +178,35 @@ document.addEventListener('DOMContentLoaded', function() {
     };
 
     // Function to populate parts list
-    function populatePartsList(imageSrc) {
-        const build = buildSpecs[imageSrc];
-        if (!build) return;
+// Function to populate parts list
+function populatePartsList(imageSrc) {
+    // Remove the leading '../' from imageSrc to match the keys in buildSpecs
+    const keyForBuildSpecs = imageSrc.startsWith('../') ? imageSrc.substring(3) : imageSrc;
 
-        buildTitle.textContent = build.title;
-        partsList.innerHTML = '';
+    const build = buildSpecs[keyForBuildSpecs]; // Use the modified key
 
-        build.parts.forEach(part => {
-            const partItem = document.createElement('div');
-            partItem.className = 'part-item';
-            partItem.innerHTML = `
-                <div class="part-name">${part.name}</div>
-                <div class="part-specs">${part.specs}</div>
-                <a href="${part.link}" target="_blank" rel="noopener noreferrer" class="view-part-btn">View</a>
-            `;
-            partsList.appendChild(partItem);
-        });
+    if (!build) {
+        console.error('Build specs not found for key:', keyForBuildSpecs, '(original imageSrc:', imageSrc + ')');
+        // Optionally, display a message in the modal if data isn't found
+        partsList.innerHTML = '<p>Sorry, build details are currently unavailable.</p>';
+        buildTitle.textContent = 'Details Not Found';
+        return;
     }
 
+    buildTitle.textContent = build.title;
+    partsList.innerHTML = ''; // Clears previous parts
+
+    build.parts.forEach(part => {
+        const partItem = document.createElement('div');
+        partItem.className = 'part-item';
+        partItem.innerHTML = `
+            <div class="part-name">${part.name}</div>
+            <div class="part-specs">${part.specs}</div>
+            <a href="${part.link}" target="_blank" rel="noopener noreferrer" class="view-part-btn">View</a>
+        `;
+        partsList.appendChild(partItem);
+    });
+}
     // Function to open modal
     function openModal(imageSrc) {
         modal.style.display = 'flex';
